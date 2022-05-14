@@ -1,17 +1,22 @@
 class Solution {
 public:
-    int majorityElement(vector<int>& nums) {
-        unordered_map<int,int>umap;
-        int ans=0;
-        for(auto i:nums)
-            umap[i]++;
+    int majorityElement(vector<int>& v) {
+//A Linear Time Majority Vote Algorithm (ut austin)
+        int maj=INT_MIN,count=0;
         
-        for(auto i:umap){
-            if(i.second>nums.size()/2){
-                ans=i.first;
-                break;
+        for(int i=0;i<v.size();i++){
+            if(count==0){
+                maj=v[i];
             }
+            
+            if(v[i]==maj){
+                count++;
+            }
+            else{
+                count--;
+            }
+            
         }
-        return ans;
+        return maj;
     }
 };
