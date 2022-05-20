@@ -30,10 +30,11 @@ class Solution{
 	    }
 	   
 	    int mn=INT_MAX;
-	    for(int i=0;i<total+1;i++){
+	    for(int i=total/2;i>=0;i--){
 	        if(dp[n][i]){
 	            //cout<<i<<endl;
 	            mn=min(mn,abs(total-2*i));
+	            break;
 	        }
 	    }
 	    
