@@ -9,36 +9,37 @@ public:
         if((sum+tar)%2 !=0 || sum<abs(tar)){
             return 0;
         }
-        cout<<"sum1="<<sum<<endl;
+        //cout<<"sum1="<<sum<<endl;
         sum=abs((sum-tar)/2);
-        cout<<"sum2="<<sum<<endl;
-        vector<vector<int>>dp(n+1,vector<int>(sum+1,0));
-        // vector<int>dp1(sum+1,0);
-        // vector<int>dp2(sum+1,0);
+        //cout<<"sum2="<<sum<<endl;
+        // vector<vector<int>>dp(n+1,vector<int>(sum+1,0));
+        vector<int>dp1(sum+1,0);
+        vector<int>dp2(sum+1,0);
         
         
         //initialise dp array
-        // dp1[0]=1;
-        // dp2[0]=1;
-        for(int i=0;i<n+1;i++){
-            dp[i][0]=1;
-        }
+        dp1[0]=1;
+        dp2[0]=1;
+        // for(int i=0;i<n+1;i++){
+        //     dp[i][0]=1;
+        // }
         
         //main logic
         for(int i=1;i<n+1;i++){
             for(int j=0;j<sum+1;j++){
                 if(v[i-1]<=j){
-                    dp[i][j] = dp[i-1][j] + dp[i-1][j-v[i-1]];
-                    //dp2[j] = dp1[j] + dp1[j-v[i-1]];
+                    // dp[i][j] = dp[i-1][j] + dp[i-1][j-v[i-1]];  
+                    dp2[j] = dp1[j] + dp1[j-v[i-1]];
                 }
                 else{
-                    dp[i][j] = dp[i-1][j];
-                    //dp2[j] = dp1[j];
+                    // dp[i][j] = dp[i-1][j];
+                    dp2[j] = dp1[j];
                 }
-                //dp1=dp2;
             }
+            dp1=dp2;
+            
         }
-        return dp[n][sum];
+        return dp1[sum];
         
     }
 };
