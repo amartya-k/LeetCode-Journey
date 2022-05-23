@@ -13,8 +13,8 @@ class Solution{
     int cutRod(int price[], int n) {
         //code here
         vector<vector<int>>dp(n+1,vector<int>(n+1,0));
-        for(int i=0;i<n+1;i++)
-            dp[0][i]=INT_MIN;
+        // for(int i=0;i<n+1;i++)
+        //     dp[0][i]=INT_MIN;
         
         for(int i=1;i<n+1;i++){
             
