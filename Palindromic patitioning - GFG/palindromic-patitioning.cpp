@@ -21,7 +21,7 @@ public:
         return solve(str,0,str.length()-1);
     }
     
-    bool palin(string s,int i, int j){
+    bool palin(string &s,int i, int j){
         while(i<=j){
             if(s[i]!=s[j]){
                 return false;
