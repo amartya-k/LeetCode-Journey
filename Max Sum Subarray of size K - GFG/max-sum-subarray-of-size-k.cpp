@@ -7,16 +7,31 @@ class Solution{
 public:
     long maximumSumSubarray(int K, vector<int> &Arr , int N){
         // code here 
-        long mx=0,c_sum=0;
-        //calculate first window sum
-        for(int i=0;i<K;i++)
-            c_sum+=Arr[i];
-        mx=max(mx,c_sum);
+        //long mx=0,c_sum=0;
+        // //calculate first window sum
+        // for(int i=0;i<K;i++)
+        //     c_sum+=Arr[i];
+        // mx=max(mx,c_sum);
         
-        for(int i=K;i<Arr.size();i++){
-            c_sum-=Arr[i-K];
-            c_sum+=Arr[i];
-            mx=max(mx,c_sum);
+        // for(int i=K;i<Arr.size();i++){
+        //     c_sum-=Arr[i-K];
+        //     c_sum+=Arr[i];
+        //     mx=max(mx,c_sum);
+        // }
+        // return mx;
+        
+        //second approach
+        long mx=0,c_sum=0;
+        int i=0,j=0;
+        while(j<Arr.size()){
+            c_sum+=Arr[j];
+            if(j-i+1==K){
+                mx=max(mx,c_sum);
+                c_sum-=Arr[i++];
+                
+            }
+            j++;
+            
         }
         return mx;
     }
