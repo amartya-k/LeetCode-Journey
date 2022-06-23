@@ -33,15 +33,11 @@ public:
             }
         }
         
-        while(cur1){
-            res->next = cur1;
-            res=res->next;
-            cur1=cur1->next;
+        if(cur1){
+            res->next=cur1;
         }
-        while(cur2){
-            res->next = cur2;
-            res=res->next;
-            cur2=cur2->next;
+        else{
+            res->next=cur2;
         }
         
         return temp->next;
