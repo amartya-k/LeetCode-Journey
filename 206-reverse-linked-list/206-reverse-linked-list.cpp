@@ -16,14 +16,13 @@ public:
         
         ListNode*temp;
         ListNode*cur=head;
-        ListNode*start=new ListNode(cur->val);
-        cur=cur->next;
+        ListNode*start=NULL;
         
         while(cur){
-            temp=new ListNode(cur->val);
-            temp->next=start;
-            start=temp;
-            cur=cur->next;
+            temp=cur->next;
+            cur->next=start;
+            start=cur;
+            cur=temp;
         }
         return start;
     }
