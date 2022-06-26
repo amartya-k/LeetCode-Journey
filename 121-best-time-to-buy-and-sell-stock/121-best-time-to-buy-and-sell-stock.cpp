@@ -1,14 +1,17 @@
 class Solution {
 public:
     int maxProfit(vector<int>& v) {
-       int m=0,cp=10001;
+        int cp=INT_MAX,profit=0;
         
         for(int i=0;i<v.size();i++){
-            if(cp>v[i]){
+            if(v[i]<cp){
                 cp=v[i];
             }
-            m=max(m,v[i]-cp);
+            else{
+                profit=max(profit,v[i]-cp);
+            }
+            //cout<<cp<<endl;
         }
-        return m;
+        return profit;
     }
 };
