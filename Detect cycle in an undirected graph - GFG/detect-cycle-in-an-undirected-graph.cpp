@@ -18,16 +18,12 @@ class Solution {
             
             for(auto& i:adj[cur]){
                 if(!vis[i]){
-                    if(i!=parent){
-                        q.push({i,cur});
-                        vis[i]=true;
-                    }
+                    q.push({i,cur});
+                    vis[i]=true;
                     
                 }
-                else{
-                    if(i!=parent){
-                        return true;
-                    }
+                else if(i!=parent){
+                    return true;
                 }
             }
         }
