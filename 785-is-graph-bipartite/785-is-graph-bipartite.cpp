@@ -5,7 +5,7 @@ public:
         vector<int>vis(n,-1);
         for(int i=0;i<n;i++){
             if(vis[i]==-1){
-                if(!bfs(i,graph,vis)){
+                if(!dfs(i,graph,vis)){
                     return false;
                 }
             }
@@ -28,6 +28,23 @@ public:
                 else if(vis[i]==vis[cur]){
                     return false;
                 }
+            }
+        }
+        return true;
+    }
+    
+    bool dfs(int n,vector<vector<int>>& graph,vector<int>& vis){
+        if(vis[n]==-1)
+            vis[n]=1;
+        
+        for(auto&i:graph[n]){
+            if(vis[i]==-1){
+                vis[i]=1-vis[n];
+                if(!dfs(i,graph,vis))
+                    return false;
+            }
+            else if(vis[i]==vis[n]){
+                return false;
             }
         }
         return true;
