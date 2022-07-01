@@ -3,13 +3,12 @@ public:
     int fib(int n) {
         if(n==0) return 0;
         if(n==1) return 1;
-        vector<int>v(n+1,0);
-        v[0]=0;
-        v[1]=1;
+        int a=1,b=0;
         
-        for(int i=2;i<=n;i++){
-            v[i]=v[i-1]+v[i-2];
+        for(int i=0;i<n;i++){
+            b=a+b;
+            swap(a,b);
         }
-        return v[n];
+        return b;
     }
 };
