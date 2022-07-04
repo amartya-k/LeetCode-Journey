@@ -10,19 +10,54 @@ class Solution
 	vector<int> topoSort(int V, vector<int> adj[]) 
 	{
 	    // code here
-	    stack<int>s;
-	    vector<bool>vis(V);
-	    vector<int>r;
-	    for(int i=0;i<V;i++){
-	        if(!vis[i]){
-	            dfs(i,adj,s,vis);
-	        }
-	    }
-	    while(!s.empty()){
-	        r.push_back(s.top());
-	        s.pop();
-	    }
-	    return r;
+	   // stack<int>s;
+	   // vector<bool>vis(V);
+	   // vector<int>r;
+	   // for(int i=0;i<V;i++){
+	   //     if(!vis[i]){
+	   //         dfs(i,adj,s,vis);
+	   //     }
+	   // }
+	   // while(!s.empty()){
+	   //     r.push_back(s.top());
+	   //     s.pop();
+	   // }
+	   // return r;
+	   //Above code is for DFS algo
+	   
+	   //BFS method or Kahn's Algo
+	   
+	   //1. count in-degrees
+	   vector<int>in(V,0);
+	   vector<int>res;
+	   queue<int>q;
+	   
+	   for(int i=0;i<V;i++){
+	       for(auto a:adj[i]){
+	           in[a]++;
+	       }
+	   }
+	   
+	   for(int i=0;i<V;i++){
+	       if(in[i]==0){
+	           q.push(i);
+	       }
+	   }
+	   
+	   while(!q.empty()){
+	       int node=q.front();
+	       q.pop();
+	       res.push_back(node);
+	       for(auto i:adj[node]){
+	           in[i]--;
+	           if(in[i]==0){
+	               q.push(i);
+	           }
+	       }
+	   }
+	   return res;
+	   
+	   
 	}
 	
 	void dfs(int n, vector<int> adj[], stack<int>&s, vector<bool>&vis){
