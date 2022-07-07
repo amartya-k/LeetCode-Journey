@@ -8,13 +8,19 @@ public:
         dp[0][0]=true;
 
         //base case update;
-        //cols
+        //base case update;
         for(int i=1;i<n1+1;i++){
-            dp[0][i]= dp[0][i-1] && s1[i-1]==s3[i-1];
+            if(s1.substr(0,i)==s3.substr(0,i))
+                dp[0][i]=true;
+            else
+                break;
         }
-        //rows
+        
         for(int i=1;i<n2+1;i++){
-            dp[i][0]= dp[i-1][0] && s2[i-1]==s3[i-1];
+            if(s2.substr(0,i)==s3.substr(0,i))
+                dp[i][0]=true;
+            else
+                break;
         }
 
         //actual logic
