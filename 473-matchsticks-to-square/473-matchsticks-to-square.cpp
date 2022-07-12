@@ -9,6 +9,7 @@ public:
         vector<int>s(4,0);
         
         sort(mat.begin(),mat.end(),greater<int>());
+        if (mat[0] > a) return false;
         return solve(0,mat,a,s);
     }
     
