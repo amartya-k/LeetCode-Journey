@@ -19,6 +19,13 @@ public:
         
         for(int j=0;j<4;j++){
             if(s[j]+mat[i]<=a){
+                
+                int p = j;
+                while (--p >= 0) // third
+                    if (s[j] == s[p]) 
+                        break;
+                if (p != -1) continue;
+                
                 s[j]+=mat[i];
                 if(solve(i+1,mat,a,s))
                     return true;
